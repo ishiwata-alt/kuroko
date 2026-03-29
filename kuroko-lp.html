@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黒子になろう。| 在宅ワークをしたいママのコミュニティ</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Noto+Sans+JP:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --rose: #C4888E;
+  --rose-light: #d9a8ad;
+  --rose-pale: #f5e8e9;
+  --rose-deep: #a86870;
+  --navy: #1E2D5A;
+  --navy-pale: #e8ebf3;
+  --offwhite: #F7F3F1;
+  --offwhite-dark: #ede7e4;
+  --gold: #c9a84c;
+  --gold-pale: #f7f0e0;
+  --green: #5a8a6a;
+  --green-pale: #e6f0e9;
+  --text: #2a2a2a;
+  --text-muted: #777;
+  --border: #e2d8d5;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  background: var(--offwhite);
+  color: var(--text);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* =====================
+   NAV
+===================== */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  background: rgba(247,243,241,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  color: var(--navy);
+  letter-spacing: 0.06em;
+  font-style: italic;
+}
+.nav-cta {
+  background: var(--rose);
+  color: white;
+  padding: 9px 22px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: all 0.25s;
+  font-weight: 400;
+}
+.nav-cta:hover { background: var(--rose-deep); transform: translateY(-1px); }
+
+/* =====================
+   HERO
+===================== */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left {
+  background: var(--navy);
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 120px 60px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left::before {
+  content: '';
+  position: absolute; bottom: -80px; right: -80px;
+  width: 360px; height: 360px; border-radius: 50%;
+  background: rgba(196,136,142,0.1);
+}
+.hero-left::after {
+  content: '';
+  position: absolute; top: 80px; left: -40px;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: rgba(196,136,142,0.06);
+}
+.hero-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rose-light);
+  margin-bottom: 28px;
+  animation: fadeUp 0.7s ease both;
+}
+.hero-main {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
+  font-weight: 300;
+  font-style: italic;
+  color: white;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+  animation: fadeUp 0.7s ease 0.1s both;
+}
+.hero-period {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 300;
+  color: var(--rose-light);
+  animation: fadeUp 0.7s ease 0.15s both;
+}
+.hero-divider {
+  width: 40px; height: 1px;
+  background: var(--rose);
+  margin: 28px 0;
+  animation: fadeUp 0.7s ease 0.2s both;
+}
+.hero-sub {
+  font-size: 0.92rem;
+  color: rgba(247,243,241,0.72);
+  line-height: 2.1;
+  max-width: 340px;
+  margin-bottom: 40px;
+  animation: fadeUp 0.7s ease 0.25s both;
+}
+.hero-sub em {
+  font-style: normal;
+  color: white;
+  font-weight: 400;
+}
+.hero-btns {
+  display: flex; flex-direction: column; gap: 10px;
+  max-width: 280px;
+  animation: fadeUp 0.7s ease 0.3s both;
+}
+.btn-primary {
+  display: block;
+  background: var(--rose);
+  color: white;
+  padding: 14px 24px;
+  border-radius: 4px;
+  font-size: 0.88rem;
+  font-weight: 400;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  text-align: center;
+  transition: all 0.25s;
+  box-shadow: 0 4px 20px rgba(196,136,142,0.4);
+}
+.btn-primary:hover { background: var(--rose-deep); transform: translateY(-2px); }
+.btn-ghost {
+  display: block;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(247,243,241,0.75);
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.25s;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.6); color: white; }
+
+.hero-right {
+  background: var(--offwhite);
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 120px 60px 80px;
+}
+.hero-message {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--navy);
+  line-height: 2;
+  border-left: 2px solid var(--rose);
+  padding-left: 24px;
+  margin-bottom: 40px;
+}
+.hero-checks { display: flex; flex-direction: column; gap: 0; }
+.hero-check {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+.hero-check:first-child { border-top: 1px solid var(--border); }
+.check-icon {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--rose-pale);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 0.7rem;
+  color: var(--rose-deep);
+  font-weight: 500;
+}
+.check-text { font-size: 0.85rem; line-height: 1.7; color: var(--text); }
+.check-text strong { color: var(--navy); font-weight: 500; display: block; }
+
+/* =====================
+   SECTIONS BASE
+===================== */
+.container { max-width: 1000px; margin: 0 auto; padding: 0 40px; }
+.sec-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 12px;
+}
+.sec-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1.4;
+  margin-bottom: 40px;
+}
+
+/* =====================
+   TROUBLE
+===================== */
+.trouble { background: white; padding: 88px 0; }
+.trouble-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--offwhite-dark);
+  margin-bottom: 32px;
+}
+.trouble-item {
+  background: white;
+  padding: 28px 24px;
+}
+.trouble-item-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.trouble-item-text {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+.trouble-item-text strong { color: var(--navy); font-weight: 500; display: block; margin-bottom: 4px; }
+.trouble-answer {
+  background: var(--navy);
+  padding: 28px 32px;
+  border-radius: 4px;
+  display: flex; align-items: center; gap: 20px;
+}
+.trouble-answer-icon { font-size: 1.8rem; flex-shrink: 0; }
+.trouble-answer-text { font-size: 0.92rem; color: rgba(247,243,241,0.85); line-height: 1.9; }
+.trouble-answer-text strong { color: white; font-weight: 500; }
+
+/* =====================
+   CONCEPT
+===================== */
+.concept { background: var(--rose-pale); padding: 88px 0; }
+.concept-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.concept-text {}
+.concept-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--navy);
+  line-height: 1.4;
+  margin-bottom: 24px;
+}
+.concept-body { font-size: 0.88rem; line-height: 2.2; color: var(--text-muted); }
+.concept-body p { margin-bottom: 16px; }
+.concept-body strong { color: var(--text); font-weight: 500; }
+.concept-values { display: flex; flex-direction: column; gap: 16px; }
+.concept-value {
+  background: white;
+  border-radius: 8px;
+  padding: 22px 24px;
+  border-left: 3px solid var(--rose);
+}
+.cv-title { font-weight: 500; font-size: 0.92rem; color: var(--navy); margin-bottom: 6px; }
+.cv-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.7; }
+
+/* =====================
+   LAYERS
+===================== */
+.layers { background: var(--offwhite); padding: 88px 0; }
+.layers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.layer-card {
+  border-radius: 8px;
+  overflow: hidden;
+}
+.layer-header {
+  padding: 28px 28px 20px;
+}
+.layer-badge {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.layer-name {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.layer-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+.layer-body {
+  background: white;
+  padding: 24px 28px;
+  border: 1px solid var(--border);
+  border-top: none;
+}
+.layer-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.9;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--offwhite-dark);
+}
+.layer-items { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.layer-items li {
+  font-size: 0.8rem;
+  color: var(--text);
+  display: flex; gap: 8px; align-items: flex-start;
+  line-height: 1.5;
+}
+.layer-items li::before { content: '✓'; color: var(--rose); font-weight: 500; flex-shrink: 0; }
+
+/* =====================
+   STEPS
+===================== */
+.steps { background: white; padding: 88px 0; }
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--offwhite-dark);
+}
+.step-card {
+  background: white;
+  padding: 36px 28px;
+}
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--rose-pale);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.step-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 8px;
+}
+.step-title { font-size: 1rem; font-weight: 500; color: var(--navy); margin-bottom: 12px; }
+.step-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 16px; }
+.step-items { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.step-items li {
+  font-size: 0.76rem; color: var(--text-muted);
+  display: flex; gap: 6px; align-items: flex-start;
+}
+.step-items li::before { content: '→'; color: var(--rose); flex-shrink: 0; }
+
+/* =====================
+   RECRUIT
+===================== */
+.recruit { background: var(--navy); padding: 88px 0; }
+.recruit-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+.recruit-text .sec-eyebrow { color: var(--rose-light); }
+.recruit-text .sec-title { color: white; }
+.recruit-body { font-size: 0.88rem; color: rgba(247,243,241,0.65); line-height: 2; margin-bottom: 32px; }
+.recruit-items { display: flex; flex-direction: column; gap: 10px; }
+.recruit-item {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(196,136,142,0.2);
+  border-radius: 6px;
+  padding: 16px 20px;
+  font-size: 0.82rem;
+  color: rgba(247,243,241,0.8);
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.recruit-item::before { content: '✦'; color: var(--rose-light); flex-shrink: 0; font-size: 0.7rem; margin-top: 3px; }
+.recruit-together {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(196,136,142,0.2);
+  border-radius: 8px;
+  padding: 28px;
+}
+.rt-title { font-size: 0.88rem; color: var(--rose-light); font-weight: 500; margin-bottom: 16px; }
+.rt-items { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.rt-items li {
+  font-size: 0.82rem;
+  color: rgba(247,243,241,0.7);
+  display: flex; gap: 10px; align-items: flex-start;
+  line-height: 1.6;
+}
+.rt-items li::before { content: '🌸'; flex-shrink: 0; font-size: 0.75rem; }
+
+/* =====================
+   ABOUT
+===================== */
+.about { background: var(--offwhite); padding: 88px 0; }
+.about-inner { display: grid; grid-template-columns: 200px 1fr; gap: 52px; align-items: start; max-width: 800px; margin: 0 auto; }
+.about-avatar {
+  aspect-ratio: 1; border-radius: 50%;
+  background: linear-gradient(135deg, var(--rose-pale), var(--offwhite-dark));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4rem;
+  border: 3px solid white;
+  box-shadow: 0 4px 20px rgba(196,136,142,0.2);
+}
+.about-name { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: var(--navy); margin-bottom: 4px; }
+.about-role { font-size: 0.75rem; color: var(--rose-deep); margin-bottom: 20px; line-height: 1.6; }
+.about-body { font-size: 0.85rem; line-height: 2.1; color: var(--text-muted); }
+.about-body p { margin-bottom: 14px; }
+.about-body strong { color: var(--text); font-weight: 500; }
+.about-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+.about-tag {
+  font-size: 0.7rem; padding: 4px 12px;
+  border-radius: 12px; background: var(--rose-pale);
+  color: var(--rose-deep);
+}
+
+/* =====================
+   ROADMAP
+===================== */
+.roadmap { background: white; padding: 88px 0; }
+.roadmap-timeline { display: flex; flex-direction: column; gap: 0; position: relative; padding-left: 40px; }
+.roadmap-timeline::before {
+  content: ''; position: absolute;
+  left: 13px; top: 24px; bottom: 24px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--rose-light), var(--navy));
+}
+.roadmap-item { display: grid; grid-template-columns: 1fr; padding: 24px 0; position: relative; }
+.roadmap-dot {
+  position: absolute; left: -40px; top: 28px;
+  width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.68rem; font-weight: 500; color: white;
+  border: 3px solid var(--offwhite);
+  z-index: 1;
+}
+.roadmap-period { font-size: 0.7rem; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 6px; }
+.roadmap-title { font-size: 1rem; font-weight: 500; color: var(--navy); margin-bottom: 10px; }
+.roadmap-items { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.roadmap-items li { font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 8px; }
+.roadmap-items li::before { content: '—'; color: var(--rose-light); flex-shrink: 0; }
+
+/* =====================
+   CTA
+===================== */
+.cta { background: var(--rose); padding: 88px 0; text-align: center; }
+.cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 300;
+  font-style: italic;
+  color: white;
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+.cta-sub { font-size: 0.92rem; color: rgba(255,255,255,0.8); line-height: 1.9; margin-bottom: 40px; }
+.cta-form { max-width: 480px; margin: 0 auto; }
+.form-group { margin-bottom: 12px; }
+.form-input, .form-select {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  color: white;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-input::placeholder { color: rgba(255,255,255,0.45); }
+.form-input:focus, .form-select:focus { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.2); }
+.form-select option { background: var(--navy); color: white; }
+.form-submit {
+  width: 100%;
+  margin-top: 4px;
+  padding: 16px;
+  background: white;
+  color: var(--rose-deep);
+  border: none;
+  border-radius: 6px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+.form-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+.cta-note { margin-top: 16px; font-size: 0.72rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+
+/* =====================
+   FOOTER
+===================== */
+footer {
+  background: var(--navy);
+  padding: 32px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: rgba(247,243,241,0.6);
+}
+.footer-copy { font-size: 0.65rem; color: rgba(247,243,241,0.25); }
+
+/* =====================
+   ANIMATION
+===================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =====================
+   MOBILE
+===================== */
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding: 100px 28px 60px; min-height: 100vh; }
+  .container { padding: 0 24px; }
+  .trouble-grid { grid-template-columns: 1fr; }
+  .concept-inner { grid-template-columns: 1fr; gap: 40px; }
+  .layers-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .recruit-inner { grid-template-columns: 1fr; gap: 40px; }
+  .about-inner { grid-template-columns: 1fr; }
+  .roadmap-timeline { padding-left: 28px; }
+  footer { flex-direction: column; gap: 10px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">黒子になろう。</div>
+  <a href="#join" class="nav-cta">無料で参加する</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">在宅ワークをしたいママのコミュニティ</p>
+    <h1 class="hero-main">黒子に</h1>
+    <h1 class="hero-period">なろう。</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">
+      主役じゃなくていい。<br>
+      <em>誰かのワクワクを形にする。</em><br>
+      それで稼ぐ。<br>
+      それが、黒子という働き方。
+    </p>
+    <div class="hero-btns">
+      <a href="#join" class="btn-primary">🌸 無料コミュニティに参加する</a>
+      <a href="#about-community" class="btn-ghost">コミュニティについて知る</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <p class="concept-title" style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-style:italic; color:var(--navy); line-height:1.6; margin-bottom:32px;">
+      「子どもがいるから、<br>ママだからは、<br>好きなことをしてはいけない<br>理由にならない。」
+    </p>
+    <div class="hero-checks">
+      <div class="hero-check">
+        <div class="check-icon">✓</div>
+        <div class="check-text">
+          <strong>好きでもないパートをやめたい</strong>
+          自分の時間を切り売りするのに疲れた
+        </div>
+      </div>
+      <div class="hero-check">
+        <div class="check-icon">✓</div>
+        <div class="check-text">
+          <strong>在宅で働きたいけど、何からすれば…</strong>
+          フリーランスという選択肢は知ってるけど自分にできる気がしない
+        </div>
+      </div>
+      <div class="hero-check">
+        <div class="check-icon">✓</div>
+        <div class="check-text">
+          <strong>一歩を踏み出す「背中」が足りない</strong>
+          情報はある、でも動けない。誰かと一緒なら動けるかも
+        </div>
+      </div>
+      <div class="hero-check">
+        <div class="check-icon">✓</div>
+        <div class="check-text">
+          <strong>子どもに「ママかっこいい」と言われたい</strong>
+          自分らしく働いてる姿を見せたい
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TROUBLE -->
+<section class="trouble" id="about-community">
+  <div class="container">
+    <p class="sec-eyebrow">Problem</p>
+    <h2 class="sec-title">なぜ動けないのか、わかってる。</h2>
+    <div class="trouble-grid">
+      <div class="trouble-item">
+        <div class="trouble-item-label">ママ側のリアル</div>
+        <div class="trouble-item-text"><strong>情報はある。でも動けない。</strong>クラウドソーシングを教えてもらっても、登録すらしないまま終わる。「わかった」と「できた」の間に大きな壁がある。</div>
+      </div>
+      <div class="trouble-item">
+        <div class="trouble-item-label">ママ側のリアル</div>
+        <div class="trouble-item-text"><strong>背中を押してくれる場所がない。</strong>一人で調べて、一人で悩んで、一人で諦める。同じ境遇の仲間がいれば、動けるのに。</div>
+      </div>
+      <div class="trouble-item">
+        <div class="trouble-item-label">経営者側のリアル</div>
+        <div class="trouble-item-text"><strong>「ちょっと手伝ってほしい」が正社員採用には至らない。</strong>デザイン・秘書・SNS運用を外注したいが、信頼できる人が見つからない。</div>
+      </div>
+      <div class="trouble-item">
+        <div class="trouble-item-label">経営者側のリアル</div>
+        <div class="trouble-item-text"><strong>フリーランスに頼みたいけど、どこで探せばいい？</strong>クオリティとコストのバランスが合う人との出会い方がわからない。</div>
+      </div>
+    </div>
+    <div class="trouble-answer">
+      <div class="trouble-answer-icon">🌸</div>
+      <div class="trouble-answer-text">
+        <strong>「黒子になろう。」は、この両方の問題を同時に解決します。</strong><br>
+        動きたいママを育て、経営者の右腕として送り出す。その循環が、地域を豊かにします。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section class="concept">
+  <div class="container">
+    <div class="concept-inner">
+      <div class="concept-text">
+        <p class="sec-eyebrow">Concept</p>
+        <h2 class="sec-title">黒子という<br>働き方</h2>
+        <div class="concept-body">
+          <p>主役は、クライアント。あなたは<strong>その人のワクワクを形にする人</strong>。</p>
+          <p>デザインを作って、スケジュールを管理して、資料をまとめて、SNSを運用する。表には出なくていい。でも、その人の成功になくてはならない存在になる。</p>
+          <p>それが黒子という働き方。<strong>「好き」と「得意」が、誰かの役に立つ。</strong></p>
+        </div>
+      </div>
+      <div class="concept-values">
+        <div class="concept-value">
+          <div class="cv-title">① 情報より「背中を押す体験」を</div>
+          <div class="cv-desc">教えることより、動かすことを優先。小さな成功体験の積み重ねで「私にもできる」を実感してもらいます。</div>
+        </div>
+        <div class="concept-value">
+          <div class="cv-title">② 最初からプロ意識を</div>
+          <div class="cv-desc">自由＝守られない分、プロ意識が必須。報連相・守秘義務・納期の大切さを最初から伝えます。</div>
+        </div>
+        <div class="concept-value">
+          <div class="cv-title">③ 育ったフリーランスが地域を動かす</div>
+          <div class="cv-desc">コミュニティで育ったフリーランスが、地域の経営者のそばに立つ。その循環が地域を豊かにします。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LAYERS -->
+<section class="layers">
+  <div class="container">
+    <p class="sec-eyebrow">Community Structure</p>
+    <h2 class="sec-title">2層構造で、<br>無理なくステップアップ。</h2>
+    <div class="layers-grid">
+
+      <div class="layer-card">
+        <div class="layer-header" style="background:var(--navy);">
+          <div class="layer-badge" style="color:var(--rose-light);">Layer 1</div>
+          <div class="layer-name" style="color:white;">黒子になろう。<br><span style="font-size:0.9rem; font-weight:300;">（無料コミュニティ）</span></div>
+          <div class="layer-price" style="color:var(--rose-light);">無料</div>
+        </div>
+        <div class="layer-body">
+          <p class="layer-desc">在宅ワークに興味があれば誰でも参加OK。プレッシャーなし、義務なし。まずつながることから始めよう。</p>
+          <ul class="layer-items">
+            <li>LINEオープンチャットで気軽につながれる</li>
+            <li>月1回の無料オンライン交流イベント</li>
+            <li>日常的な情報交換・質問・雑談OK</li>
+            <li>Canva Tips・AI活用の情報共有</li>
+            <li>全国どこからでも参加できる</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="layer-card">
+        <div class="layer-header" style="background:var(--rose);">
+          <div class="layer-badge" style="color:rgba(255,255,255,0.7);">Layer 2</div>
+          <div class="layer-name" style="color:white;">黒子学校<br><span style="font-size:0.9rem; font-weight:300;">（本気で稼ぎたい人へ）</span></div>
+          <div class="layer-price" style="color:white;">月額 5,000〜<span style="font-size:1rem">円</span></div>
+        </div>
+        <div class="layer-body">
+          <p class="layer-desc">本気で稼ぎたい人だけが上がってくる場。有料設計が「プロ意識のある人」のフィルターになります。</p>
+          <ul class="layer-items">
+            <li>マインドセット〜実務スキル〜案件獲得まで伴走</li>
+            <li>Canva・AI活用・秘書業務の実践スキル</li>
+            <li>月額メンバーシップ＋少人数での直接サポート</li>
+            <li>卒業生が経営者の右腕として活躍する導線</li>
+            <li>石渡有沙のアシスタントになれるチャンスも</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="steps">
+  <div class="container">
+    <p class="sec-eyebrow">Curriculum</p>
+    <h2 class="sec-title">3ステップで、<br>稼げる黒子になる。</h2>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-label">Mindset</div>
+        <div class="step-title">プロの黒子になる意識</div>
+        <div class="step-desc">自由＝守られない。だからプロでないといけない。フリーランスのリアルを最初に知ることで、動ける人になる。</div>
+        <ul class="step-items">
+          <li>報連相・守秘義務・納期の大切さ</li>
+          <li>「すぐ実践できる人」だけが稼げる理由</li>
+          <li>フリーランスのリアルな働き方</li>
+        </ul>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-label">Skills</div>
+        <div class="step-title">稼げるスキルを身につける</div>
+        <div class="step-desc">CanvaとAIを使えれば、できることが一気に広がる。実践を通じて「仕事ができる人」になる。</div>
+        <ul class="step-items">
+          <li>Canvaでのデザイン制作・添削</li>
+          <li>AI活用（Claude・ChatGPT）で業務効率化</li>
+          <li>秘書・バックオフィス業務の基礎</li>
+          <li>SNS運用・コンテンツ作成</li>
+        </ul>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-label">Get Work</div>
+        <div class="step-title">実際に稼ぐ</div>
+        <div class="step-desc">学んだだけで終わらない。実際に案件を獲得して、継続的に稼げる人になる。</div>
+        <ul class="step-items">
+          <li>クラウドソーシングで初案件獲得</li>
+          <li>紹介・口コミで仕事が広がる仕組み</li>
+          <li>単価を上げるためのポジショニング</li>
+          <li>経営者へのマッチング・紹介</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECRUIT -->
+<section class="recruit">
+  <div class="container">
+    <div class="recruit-inner">
+      <div class="recruit-text">
+        <p class="sec-eyebrow">Together</p>
+        <h2 class="sec-title" style="color:white;">一緒に作りたい。</h2>
+        <p class="recruit-body">「ママが自分らしく働ける世界」への想いを持つ人が集まれば、このコミュニティはもっと強くなる。一人でやるより、同じ志を持つ人たちと一緒に作っていきたい。</p>
+        <div class="recruit-items">
+          <div class="recruit-item">「ママが自分らしく働ける世界」への共感</div>
+          <div class="recruit-item">地域のコミュニティやイベントへの関心</div>
+          <div class="recruit-item">スキルや専門性を活かしてフリーランスで活躍している</div>
+          <div class="recruit-item">自分の経験をママたちに伝えることへの意欲</div>
+          <div class="recruit-item">小さく動いて、試しながら育てていける柔軟さ</div>
+        </div>
+      </div>
+      <div>
+        <div class="recruit-together">
+          <div class="rt-title">一緒にできること</div>
+          <ul class="rt-items">
+            <li>月1回のイベントの共同企画・登壇</li>
+            <li>専門スキルを活かした講座開催</li>
+            <li>SNSでの相互発信・コミュニティの認知拡大</li>
+            <li>マルシェ出店の共同出店</li>
+            <li>それぞれのクライアントへの相互紹介</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="container">
+    <p class="sec-eyebrow" style="text-align:center;">Founder</p>
+    <h2 class="sec-title" style="text-align:center; margin-bottom:48px;">主宰について</h2>
+    <div class="about-inner">
+      <div class="about-avatar">🌸</div>
+      <div>
+        <div class="about-name">石渡 有沙</div>
+        <div class="about-role">フリーランス オンライン秘書・デザイナー<br>イベントプロデューサー / 黒子になろう。主宰</div>
+        <div class="about-body">
+          <p>埼玉県三郷市在住、3人の子どもを育てながら2024年11月に独立。自身も<strong>「在宅で働きたいけど、何からすればいいかわからなかった」</strong>ところからスタートしました。</p>
+          <p>PTA向けのデザイン素材を独学で作り始め、その評価をもとに営業を開始。今では秘書業務・デザイン・イベントプロデュースをワンストップで提供しています。</p>
+          <p><strong>「みさとの桜祭り」では初開催で1,000名以上を動員。</strong>同じようにやりたいのに動けないママたちの背中を押すために、このコミュニティを立ち上げました。</p>
+          <div class="about-tags">
+            <span class="about-tag">三郷市在住</span>
+            <span class="about-tag">3児のママ</span>
+            <span class="about-tag">Canva講師</span>
+            <span class="about-tag">AI活用</span>
+            <span class="about-tag">イベント制作</span>
+            <span class="about-tag">秘書・デザイン</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="roadmap">
+  <div class="container">
+    <p class="sec-eyebrow">Roadmap</p>
+    <h2 class="sec-title">3年後に目指す世界</h2>
+    <div class="roadmap-timeline">
+      <div class="roadmap-item">
+        <div class="roadmap-dot" style="background:var(--rose);">Y1</div>
+        <div class="roadmap-period">Year 1 — コミュニティを育てる</div>
+        <div class="roadmap-title">「ここに来れば動ける」という場所を作る</div>
+        <ul class="roadmap-items">
+          <li>無料コミュニティ100人達成</li>
+          <li>単発講座（Canva・AI活用・フリーランス入門）開始</li>
+          <li>黒子学校立ち上げ</li>
+          <li>マルシェ出店×体験ワークショップで認知拡大</li>
+        </ul>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-dot" style="background:var(--navy);">Y2</div>
+        <div class="roadmap-period">Year 2 — フリーランスと経営者をつなぐ</div>
+        <div class="roadmap-title">卒業生が実際に稼いでいる状態を作る</div>
+        <ul class="roadmap-items">
+          <li>黒子学校卒業生が経営者の右腕として活躍</li>
+          <li>マッチングの仕組みを整備</li>
+          <li>コミュニティ収益で運営が自走する状態へ</li>
+        </ul>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-dot" style="background:var(--gold);">Y3</div>
+        <div class="roadmap-period">Year 3 — 三郷から全国へ</div>
+        <div class="roadmap-title">三郷にコワーキングスペースを作る</div>
+        <ul class="roadmap-items">
+          <li>フリーランスと経営者が自然に出会える物理的な場所</li>
+          <li>三郷から全国へ広げていく起点に</li>
+          <li>「ママが自分らしく働ける」が当たり前の社会へ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="join">
+  <div class="container">
+    <h2 class="cta-title">まず、つながることから。</h2>
+    <p class="cta-sub">無料コミュニティへの参加は、今すぐできます。<br>プレッシャーなし、義務なし。まず一歩だけ。</p>
+    <div class="cta-form">
+      <div class="form-group">
+        <input class="form-input" type="text" placeholder="お名前（ニックネームでもOK）" required>
+      </div>
+      <div class="form-group">
+        <input class="form-input" type="email" placeholder="メールアドレス">
+      </div>
+      <div class="form-group">
+        <select class="form-select form-input">
+          <option value="">今の状況を教えてください</option>
+          <option>在宅ワークを始めたい・模索中</option>
+          <option>フリーランス挑戦中・まだ稼げていない</option>
+          <option>フリーランスとして活動中・もっと稼ぎたい</option>
+          <option>コミュニティを一緒に作る仲間として参加したい</option>
+        </select>
+      </div>
+      <button class="form-submit" onclick="handleJoin(event)">🌸 無料コミュニティに参加する</button>
+    </div>
+    <p class="cta-note">
+      ※ 送信後、LINEオープンチャットへの招待リンクをお送りします。<br>
+      ※ 個人情報はコミュニティ運営のみに使用します。
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">黒子になろう。by 石渡有沙</div>
+  <p class="footer-copy">© 2025 Arisa Ishiwatari. All rights reserved.</p>
+</footer>
+
+<script>
+function handleJoin(e) {
+  e.preventDefault();
+  const btn = e.target;
+  btn.textContent = '✓ 登録しました！LINEリンクをお送りします';
+  btn.style.background = '#5a8a6a';
+  btn.style.color = 'white';
+  btn.disabled = true;
+}
+</script>
+</body>
+</html>
