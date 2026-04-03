@@ -153,6 +153,17 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--t
 .d5{background:#F5EEFF;color:#5A3A8C}
 .dby{display:inline-block;font-size:10px;padding:1px 6px;border-radius:6px;font-weight:700;margin-left:4px;vertical-align:middle}.d4{background:#FEF3F4;color:#8C3A40}.d5{background:#F5EEFF;color:#5A3A8C}
 .ov{background:#FEF3C7;color:#92400E}
+
+.notif-bar{background:var(--navy);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.notif-btn{background:var(--sakura);color:white;border:none;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:5px;flex-shrink:0;transition:opacity 0.2s}
+.notif-btn:disabled{opacity:0.5;cursor:default}
+.notif-msg{font-size:11px;color:rgba(255,255,255,0.6);line-height:1.5}
+.notif-on{background:var(--green)!important}
+
+.daytoggle{display:flex;gap:8px;margin-bottom:12px}
+.daybtn{flex:1;padding:10px 8px;border-radius:30px;border:1.5px solid #E8B4B8;font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:500;background:white;color:#C4888E;cursor:pointer;transition:all 0.2s;letter-spacing:0.04em}
+.daybtn.active{background:#C4888E;color:white;font-weight:700;border-color:#C4888E}
+.daybtn:hover:not(.active){background:#F7EEF0}
 </style>
 </head>
 <body>
@@ -165,6 +176,11 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--t
     </div>
     <div class="badge">運営ハブ</div>
   </div>
+</div>
+
+<div class="notif-bar" id="notif-bar">
+  <div class="notif-msg" id="notif-msg">当日の重要時刻に通知を受け取れます</div>
+  <button class="notif-btn" id="notif-btn" onclick="toggleNotif()">🔔 通知オン</button>
 </div>
 
 <div class="tabs">
@@ -656,8 +672,8 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--t
 <!-- ===== TASKS ===== -->
 <div class="pg" id="tab-tasks">
   <div class="daytoggle">
-    <button class="daybtn active" onclick="showTaskDay(4,this)">4日（土）</button>
-    <button class="daybtn" onclick="showTaskDay(5,this)">5日（日）</button>
+    <button class="daybtn active" onclick="showTaskDay(4,this)">🌸 4日（土）</button>
+    <button class="daybtn" onclick="showTaskDay(5,this)">🌸 5日（日）</button>
   </div>
   <div id="day4">
     <div class="card">
@@ -762,6 +778,69 @@ function showTaskDay(d,btn){
   btn.classList.add('active');
 }
 function toggleZone(el){el.classList.toggle('open');}
+
+const NOTIF_KEY='sakura2026_notif';
+const SCHEDULE=[
+  {day:'4/4',h:6,m:45,label:'⏰ まもなく設営開始（7:00）',body:'スタッフ集合・設営準備を始めてください'},
+  {day:'4/4',h:8,m:20,label:'⏰ 搬入開始 10分前',body:'8:30 出店者搬入スタート・車両誘導配置につく'},
+  {day:'4/4',h:9,m:45,label:'⏰ オープン 15分前',body:'10:00 開会式・最終確認を'},
+  {day:'4/4',h:10,m:40,label:'⏰ 綱引き開会式 5分前',body:'10:45 綱引き開会式・スペース確認'},
+  {day:'4/4',h:15,m:50,label:'⏰ 撤収まで10分',body:'16:00 撤収開始・準備してください'},
+  {day:'4/4',h:16,m:50,label:'⏰ 車両誘導まで10分',body:'17:00 出店者搬出車両誘導スタート'},
+  {day:'4/5',h:6,m:45,label:'⏰ 2日目 設営開始（7:00）',body:'スタッフ集合・設営準備を'},
+  {day:'4/5',h:8,m:20,label:'⏰ 搬入開始 10分前',body:'8:30 搬入スタート・車両誘導配置につく'},
+  {day:'4/5',h:9,m:45,label:'⏰ オープン 15分前',body:'10:00 開会・最終確認を'},
+  {day:'4/5',h:15,m:50,label:'⏰ 撤収まで10分',body:'16:00 撤収開始・準備してください'},
+  {day:'4/5',h:16,m:50,label:'⏰ 車両誘導まで10分',body:'17:00 搬出車両誘導スタート'},
+];
+function getScheduleDates(){
+  return SCHEDULE.map(s=>{
+    const d=s.day==='4/4'?4:5;
+    return {...s,date:new Date(2026,3,d,s.h,s.m,0)};
+  });
+}
+let nTimers=[];
+function scheduleNotifs(){
+  nTimers.forEach(t=>clearTimeout(t));nTimers=[];
+  const now=new Date();
+  getScheduleDates().forEach(s=>{
+    const ms=s.date-now;
+    if(ms>0){nTimers.push(setTimeout(()=>new Notification(s.label,{body:s.body}),ms));}
+  });
+}
+function toggleNotif(){
+  if(!('Notification' in window)){alert('このブラウザは通知未対応です');return;}
+  if(Notification.permission==='granted'&&localStorage.getItem(NOTIF_KEY)==='on'){
+    nTimers.forEach(t=>clearTimeout(t));nTimers=[];
+    localStorage.setItem(NOTIF_KEY,'off');updateNotifUI(false);
+  } else {
+    Notification.requestPermission().then(p=>{
+      if(p==='granted'){
+        scheduleNotifs();localStorage.setItem(NOTIF_KEY,'on');updateNotifUI(true);
+        setTimeout(()=>new Notification('🌸 みさとの桜まつり 通知オン！',{body:'当日の重要時刻に通知でお知らせします'}),500);
+      } else {
+        document.getElementById('notif-msg').textContent='ブラウザの設定から通知を許可してください';
+      }
+    });
+  }
+}
+function updateNotifUI(on){
+  const btn=document.getElementById('notif-btn');
+  const msg=document.getElementById('notif-msg');
+  if(on){
+    btn.textContent='🔔 通知オン中';btn.style.background='var(--green)';
+    const up=getScheduleDates().filter(s=>s.date>new Date());
+    msg.textContent=up.length>0?'次: '+up[0].day+' '+String(up[0].h).padStart(2,'0')+':'+String(up[0].m).padStart(2,'0')+' '+up[0].label.slice(3):'スケジュール済み';
+  } else {
+    btn.textContent='🔔 通知オン';btn.style.background='';
+    msg.textContent='当日の重要時刻に通知を受け取れます';
+  }
+}
+window.addEventListener('load',()=>{
+  if(!('Notification' in window)){document.getElementById('notif-bar').style.display='none';return;}
+  if(Notification.permission==='granted'&&localStorage.getItem(NOTIF_KEY)==='on'){scheduleNotifs();updateNotifUI(true);}
+});
+
 </script>
 </body>
 </html>
