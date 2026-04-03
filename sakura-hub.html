@@ -622,16 +622,16 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--t
     <div class="person-card"><div class="pname">門脇 <span class="prole" style="background:#EBF4FF;color:#1A4A8C">両日</span></div><div class="ptask">【設営】畳搬入受け入れ・ステージ設営<br>【当日】本部・全体意思決定<br>【撤収】観客席撤収・本部撤収</div></div>
     <div class="person-card"><div class="pname">中野 <span class="prole" style="background:#EBF4FF;color:#1A4A8C">両日</span></div><div class="ptask">【設営】ステージトラック搬入(8:00)・設営<br>【当日】MC・ステージ進行・綱引き<br>【撤収】ステージ撤収・トラック返却</div></div>
     <div class="person-card"><div class="pname">巽 <span class="prole" style="background:#EBF4FF;color:#1A4A8C">4日○ / 5日11:00〜</span></div><div class="ptask">【設営】出店者車・キッチンカー誘導・会議室開錠<br>【当日】綱引き補佐・ウェルネス出演者対応<br>【撤収】出店者車誘導・会議室施錠</div></div>
-    <div class="person-card"><div class="pname">高橋 <span class="prole" style="background:#EBF4FF;color:#1A4A8C">両日</span></div><div class="ptask">【設営】消防車などの受け入れ<br>【当日】綱引き・フリー<br>【撤収】車両誘導</div></div>
+    <div class="person-card"><div class="pname">高橋 <span class="prole" style="background:#EBF4FF;color:#1A4A8C">両日</span></div><div class="ptask">【設営】消防車などの受け入れ<br>【当日】綱引き運営<br>【撤収】フリー</div></div>
     <div class="person-card"><div class="pname">石渡 <span class="prole" style="background:#EBF4FF;color:#1A4A8C">両日</span></div><div class="ptask">【設営】本部・出店者受付<br>【当日】本部受付<br>【撤収】出店者搬出対応（本部）</div></div>
     <div class="person-card"><div class="pname">木下 <span class="prole" style="background:#EBF4FF;color:#1A4A8C">両日</span></div><div class="ptask">【設営】ステージ設営<br>【当日】ステージ運営<br>【撤収】ステージ撤収</div></div>
   </div>
   <div class="card">
     <div class="ctitle"><span class="dot" style="background:var(--green)"></span>サポートスタッフ</div>
     <div class="person-card"><div class="pname">中村（あみゅぜ） <span class="prole" style="background:var(--green-light);color:var(--green)">両日</span></div><div class="ptask">【設営】出店者車・キッチンカー誘導<br>【当日】会場見回り・綱引き<br>【撤収】車両退場誘導(17:00〜)</div></div>
-    <div class="person-card"><div class="pname">早間こうじ <span class="prole" style="background:var(--green-light);color:var(--green)">4日〜12:30 / 5日○</span></div><div class="ptask">【設営】観客席設営<br>【当日】会場見回り・綱引き<br>【撤収】観客席撤収</div></div>
+    <div class="person-card"><div class="pname">早間こうじ <span class="prole" style="background:var(--green-light);color:var(--green)">4日○ / 5日〜12:30</span></div><div class="ptask">【設営】観客席設営<br>【当日】会場見回り・綱引き<br>【撤収】観客席撤収・ステージ撤収</div></div>
     <div class="person-card"><div class="pname">眞部こうきち <span class="prole" style="background:var(--green-light);color:var(--green)">4日AM / 5日○</span></div><div class="ptask">【設営】観客席設営<br>【当日】会場見回り<br>【撤収】観客席撤収</div></div>
-    <div class="person-card"><div class="pname">會田さとこ <span class="prole" style="background:var(--green-light);color:var(--green)">4日〜10:00 / 5日PM</span></div><div class="ptask">【設営】出店者車誘導<br>【撤収】車両退場誘導(17:00〜)</div></div>
+    <div class="person-card"><div class="pname">會田さとこ <span class="prole" style="background:var(--green-light);color:var(--green)">4日〜10:00 / 5日16:00〜</span></div><div class="ptask">【設営】出店者車誘導<br>【撤収】車両退場誘導(17:00〜)</div></div>
     <div class="person-card"><div class="pname">日高議員 <span class="prole" style="background:var(--green-light);color:var(--green)">両日</span></div><div class="ptask">【設営】本部設営・出店者受付<br>【当日】本部受付<br>【撤収】出店者搬出・本部撤収</div></div>
     <div class="person-card"><div class="pname">桑原議員 <span class="prole" style="background:var(--amber-light);color:var(--amber)">4日○ / 5日×</span></div><div class="ptask">【設営】観客席設営<br>【当日】会場見回り<br>【撤収】観客席撤収</div></div>
   </div>
@@ -655,47 +655,51 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--t
 
 <!-- ===== TASKS ===== -->
 <div class="pg" id="tab-tasks">
-  <div class="day-toggle">
-    <button class="dtbtn on" id="td1" onclick="showTask(4)">4日（土）</button>
-    <button class="dtbtn" id="td2" onclick="showTask(5)">5日（日）</button>
+  <div class="daytoggle">
+    <button class="daybtn active" onclick="showTaskDay(4,this)">4日（土）</button>
+    <button class="daybtn" onclick="showTaskDay(5,this)">5日（日）</button>
   </div>
   <div id="day4">
     <div class="card">
-      <div class="task-phase" style="background:var(--blue)">🔧 設営（7:00〜10:00）</div>
-      <div class="task-row"><div class="task-name">ステージ設営</div><div class="task-ppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">中野</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">木下</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">門脇</span><span class="chip" style="background:var(--cream);color:var(--muted)">(篠田)</span></div></div>
-      <div class="task-row"><div class="task-name">客席設営</div><div class="task-ppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">眞部</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">早間</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">桑原</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">巽</span><span class="chip" style="background:var(--cream);color:var(--muted)">におどり</span></div></div>
-      <div class="task-row"><div class="task-name">車両誘導</div><div class="task-ppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">中野</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">中村</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">高橋</span><span class="chip" style="background:var(--cream);color:var(--muted)">シルバー</span></div></div>
-      <div class="task-row"><div class="task-name">本部設営</div><div class="task-ppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">門脇</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">石渡</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">日高</span><span class="chip" style="background:var(--cream);color:var(--muted)">におどり×2</span></div></div>
-      <div class="task-row"><div class="task-name">ウェルネス設営</div><div class="task-ppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">巽</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">早間</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">會田</span></div></div>
-      <div class="task-row"><div class="task-name">出店者受付</div><div class="task-ppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">門脇</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">石渡</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">日高</span></div></div>
-      <div class="task-phase" style="background:var(--sakura);margin-top:10px">🎉 イベント中（10:00〜16:00）</div>
-      <div class="task-row"><div class="task-name">ステージ進行</div><div class="task-ppl"><span class="chip" style="background:var(--sakura-light);color:#8C3A40">木下</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">中野</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">巽</span><span class="chip" style="background:var(--cream);color:var(--muted)">高校生ボラ</span></div></div>
-      <div class="task-row"><div class="task-name">綱引き</div><div class="task-ppl"><span class="chip" style="background:var(--sakura-light);color:#8C3A40">中野</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">高橋</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">巽</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">早間</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">中村</span></div></div>
-      <div class="task-row"><div class="task-name">本部/受付</div><div class="task-ppl"><span class="chip" style="background:var(--sakura-light);color:#8C3A40">石渡</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">日高</span><span class="chip" style="background:var(--cream);color:var(--muted)">(門脇)</span></div></div>
-      <div class="task-row"><div class="task-name">会場見回り</div><div class="task-ppl"><span class="chip" style="background:var(--sakura-light);color:#8C3A40">共栄×2</span><span class="chip" style="background:var(--cream);color:var(--muted)">シルバー×3</span></div></div>
-      <div class="task-phase" style="background:var(--amber);margin-top:10px">📦 撤収（16:00〜18:00）</div>
-      <div class="task-row"><div class="task-name">車両誘導(17:00〜)</div><div class="task-ppl"><span class="chip" style="background:var(--amber-light);color:var(--amber)">中村</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">巽</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">高橋</span></div></div>
-      <div class="task-row"><div class="task-name">本部テント撤収</div><div class="task-ppl"><span class="chip" style="background:var(--amber-light);color:var(--amber)">門脇</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">石渡</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">日高</span></div></div>
-      <div class="task-row"><div class="task-name">客席撤収</div><div class="task-ppl"><span class="chip" style="background:var(--amber-light);color:var(--amber)">早間</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">門脇</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">中野</span><span class="chip" style="background:var(--cream);color:var(--muted)">におどり</span><span class="chip" style="background:var(--cream);color:var(--muted)">(桑原)</span></div></div>
+      <div class="tphase" style="background:var(--blue)">🔧 設営（7:00〜10:00）</div>
+      <div class="trow"><div class="tname">ステージ設営</div><div class="tppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">中野</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">木下</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">門脇</span><span class="chip" style="background:var(--cream);color:var(--muted)">（篠田）</span></div></div>
+      <div class="trow"><div class="tname">客席設営</div><div class="tppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">中野</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">眞部</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">早間</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">巽</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">におどり</span></div></div>
+      <div class="trow"><div class="tname">車両誘導</div><div class="tppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">中野</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">中村</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">高橋</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">におどり</span></div></div>
+      <div class="trow"><div class="tname">本部設営</div><div class="tppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">門脇</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">石渡</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">日高</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">におどり</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">におどり</span></div></div>
+      <div class="trow"><div class="tname">ウェルネス設営</div><div class="tppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">巽</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">早間</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">會田</span></div></div>
+      <div class="trow"><div class="tname">出店者受付</div><div class="tppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">門脇</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">石渡</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">日高</span></div></div>
+      <div class="tphase" style="background:var(--sakura)">🎉 イベント中（10:00〜16:00）</div>
+      <div class="trow"><div class="tname">ステージ進行</div><div class="tppl"><span class="chip" style="background:var(--sakura-light);color:#8C3A40">木下</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">中野</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">巽</span><span class="chip" style="background:var(--cream);color:var(--muted)">（高校生ボランティア）</span></div></div>
+      <div class="trow"><div class="tname">綱引き運営</div><div class="tppl"><span class="chip" style="background:var(--sakura-light);color:#8C3A40">中野</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">高橋</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">巽</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">早間</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">中村</span></div></div>
+      <div class="trow"><div class="tname">本部/受付</div><div class="tppl"><span class="chip" style="background:var(--sakura-light);color:#8C3A40">石渡</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">日高</span><span class="chip" style="background:var(--cream);color:var(--muted)">（門脇）</span></div></div>
+      <div class="trow"><div class="tname">ウェルネスコーナー</div><div class="tppl"><span class="chip" style="background:var(--sakura-light);color:#8C3A40">巽</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">早間</span></div></div>
+      <div class="trow"><div class="tname">会場見回り</div><div class="tppl"><span class="chip" style="background:var(--cream);color:var(--muted)">共栄スタッフ</span><span class="chip" style="background:var(--cream);color:var(--muted)">共栄スタッフ</span><span class="chip" style="background:var(--cream);color:var(--muted)">シルバー</span><span class="chip" style="background:var(--cream);color:var(--muted)">シルバー</span><span class="chip" style="background:var(--cream);color:var(--muted)">シルバー</span></div></div>
+      <div class="tphase" style="background:var(--amber)">📦 撤収（16:00〜18:00）</div>
+      <div class="trow"><div class="tname">車両誘導 17:00〜</div><div class="tppl"><span class="chip" style="background:var(--amber-light);color:var(--amber)">中村</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">巽</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">高橋</span></div></div>
+      <div class="trow"><div class="tname">ステージ撤収</div><div class="tppl"><span class="chip" style="background:var(--amber-light);color:var(--amber)">中野</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">木下</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">早間</span><span class="chip" style="background:var(--cream);color:var(--muted)">（篠田）</span></div></div>
+      <div class="trow"><div class="tname">本部テント撤収</div><div class="tppl"><span class="chip" style="background:var(--amber-light);color:var(--amber)">門脇</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">石渡</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">日高</span></div></div>
+      <div class="trow"><div class="tname">客席撤収</div><div class="tppl"><span class="chip" style="background:var(--amber-light);color:var(--amber)">中野</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">門脇</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">早間</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">におどり</span><span class="chip" style="background:var(--cream);color:var(--muted)">（桑原）</span></div></div>
     </div>
   </div>
   <div id="day5" style="display:none">
     <div class="card">
-      <div class="task-phase" style="background:var(--blue)">🔧 設営（7:00〜10:00）</div>
-      <div class="task-row"><div class="task-name">ステージ設営</div><div class="task-ppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">中野</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">木下</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">門脇</span><span class="chip" style="background:var(--cream);color:var(--muted)">(篠田)</span></div></div>
-      <div class="task-row"><div class="task-name">客席設営</div><div class="task-ppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">中野</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">眞部</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">門脇</span><span class="chip" style="background:var(--cream);color:var(--muted)">におどり×2</span></div></div>
-      <div class="task-row"><div class="task-name">車両誘導</div><div class="task-ppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">中野</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">中村</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">高橋</span><span class="chip" style="background:var(--cream);color:var(--muted)">におどり</span><span class="chip" style="background:var(--cream);color:var(--muted)">シルバー</span></div></div>
-      <div class="task-row"><div class="task-name">本部設営</div><div class="task-ppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">門脇</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">石渡</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">日高</span></div></div>
-      <div class="task-row"><div class="task-name">ウェルネス設営</div><div class="task-ppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">早間</span><span class="chip" style="background:var(--cream);color:var(--muted)">におどり</span><span class="chip" style="background:var(--cream);color:var(--muted)">におどり</span></div></div>
-      <div class="task-row"><div class="task-name">出店者受付</div><div class="task-ppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">門脇</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">石渡</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">日高</span></div></div>
-      <div class="task-phase" style="background:var(--sakura);margin-top:10px">🎉 イベント中（10:00〜16:00）</div>
-      <div class="task-row"><div class="task-name">ステージ進行</div><div class="task-ppl"><span class="chip" style="background:var(--sakura-light);color:#8C3A40">木下</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">中野</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">巽</span><span class="chip" style="background:var(--cream);color:var(--muted)">高校生ボラ</span></div></div>
-      <div class="task-row"><div class="task-name">本部/受付</div><div class="task-ppl"><span class="chip" style="background:var(--sakura-light);color:#8C3A40">石渡</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">日高</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">門脇</span></div></div>
-      <div class="task-row"><div class="task-name">会場見回り</div><div class="task-ppl"><span class="chip" style="background:var(--sakura-light);color:#8C3A40">共栄×2</span><span class="chip" style="background:var(--cream);color:var(--muted)">シルバー×3</span></div></div>
-      <div class="task-phase" style="background:var(--amber);margin-top:10px">📦 撤収（16:00〜18:00）</div>
-      <div class="task-row"><div class="task-name">車両誘導(17:00〜)</div><div class="task-ppl"><span class="chip" style="background:var(--amber-light);color:var(--amber)">中村</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">巽</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">高橋</span><span class="chip" style="background:var(--cream);color:var(--muted)">(會田)</span></div></div>
-      <div class="task-row"><div class="task-name">本部テント撤収</div><div class="task-ppl"><span class="chip" style="background:var(--amber-light);color:var(--amber)">門脇</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">石渡</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">日高</span></div></div>
-      <div class="task-row"><div class="task-name">客席撤収</div><div class="task-ppl"><span class="chip" style="background:var(--amber-light);color:var(--amber)">眞部</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">門脇</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">中野</span><span class="chip" style="background:var(--cream);color:var(--muted)">におどり</span><span class="chip" style="background:var(--cream);color:var(--muted)">(桑原)</span></div></div>
+      <div class="tphase" style="background:var(--blue)">🔧 設営（7:00〜10:00）</div>
+      <div class="trow"><div class="tname">ステージ設営</div><div class="tppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">中野</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">木下</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">門脇</span><span class="chip" style="background:var(--cream);color:var(--muted)">（篠田）</span></div></div>
+      <div class="trow"><div class="tname">客席設営</div><div class="tppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">中野</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">眞部</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">門脇</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">におどり</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">におどり</span></div></div>
+      <div class="trow"><div class="tname">車両誘導</div><div class="tppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">中野</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">中村</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">高橋</span></div></div>
+      <div class="trow"><div class="tname">本部設営</div><div class="tppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">門脇</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">石渡</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">日高</span></div></div>
+      <div class="trow"><div class="tname">ウェルネス設営</div><div class="tppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">早間</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">におどり</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">におどり</span></div></div>
+      <div class="trow"><div class="tname">出店者受付</div><div class="tppl"><span class="chip" style="background:#EBF4FF;color:#1A4A8C">門脇</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">石渡</span><span class="chip" style="background:#EBF4FF;color:#1A4A8C">日高</span></div></div>
+      <div class="tphase" style="background:var(--sakura)">🎉 イベント中（10:00〜16:00）</div>
+      <div class="trow"><div class="tname">ステージ進行</div><div class="tppl"><span class="chip" style="background:var(--sakura-light);color:#8C3A40">木下</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">中野</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">巽</span><span class="chip" style="background:var(--cream);color:var(--muted)">（高校生ボランティア）</span></div></div>
+      <div class="trow"><div class="tname">本部/受付</div><div class="tppl"><span class="chip" style="background:var(--sakura-light);color:#8C3A40">石渡</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">日高</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">門脇</span></div></div>
+      <div class="trow"><div class="tname">ウェルネスコーナー</div><div class="tppl"><span class="chip" style="background:var(--sakura-light);color:#8C3A40">巽</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">早間</span><span class="chip" style="background:var(--sakura-light);color:#8C3A40">眞部</span></div></div>
+      <div class="trow"><div class="tname">会場見回り</div><div class="tppl"><span class="chip" style="background:var(--cream);color:var(--muted)">共栄スタッフ</span><span class="chip" style="background:var(--cream);color:var(--muted)">共栄スタッフ</span><span class="chip" style="background:var(--cream);color:var(--muted)">シルバー</span><span class="chip" style="background:var(--cream);color:var(--muted)">シルバー</span><span class="chip" style="background:var(--cream);color:var(--muted)">シルバー</span></div></div>
+      <div class="tphase" style="background:var(--amber)">📦 撤収（16:00〜18:00）</div>
+      <div class="trow"><div class="tname">車両誘導 17:00〜</div><div class="tppl"><span class="chip" style="background:var(--amber-light);color:var(--amber)">中村</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">巽</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">高橋</span><span class="chip" style="background:var(--cream);color:var(--muted)">（會田）</span></div></div>
+      <div class="trow"><div class="tname">ステージ撤収</div><div class="tppl"><span class="chip" style="background:var(--amber-light);color:var(--amber)">中野</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">木下</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">眞部</span><span class="chip" style="background:var(--cream);color:var(--muted)">（篠田）</span></div></div>
+      <div class="trow"><div class="tname">本部テント撤収</div><div class="tppl"><span class="chip" style="background:var(--amber-light);color:var(--amber)">門脇</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">石渡</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">日高</span></div></div>
+      <div class="trow"><div class="tname">客席撤収</div><div class="tppl"><span class="chip" style="background:var(--amber-light);color:var(--amber)">中野</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">門脇</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">眞部</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">におどり</span><span class="chip" style="background:var(--amber-light);color:var(--amber)">におどり</span></div></div>
     </div>
   </div>
   <div class="sp"></div>
@@ -710,6 +714,8 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--t
     <div class="ci" onclick="tog(this)"><div class="chk"></div><div class="cl">ドラムテーブル・畳（客席用）</div><span class="ccat">客席</span></div>
     <div class="ci" onclick="tog(this)"><div class="chk"></div><div class="cl">ステージ機材・PA</div><span class="ccat">ステージ</span></div>
     <div class="ci" onclick="tog(this)"><div class="chk"></div><div class="cl">ウェルネスコーナー音響</div><span class="ccat">設営</span></div>
+    <div class="ci" onclick="tog(this)"><div class="chk"></div><div class="cl">綱引き用の綱</div><span class="ccat">イベント</span></div>
+    <div class="ci" onclick="tog(this)"><div class="chk"></div><div class="cl">参加賞（綱引き）</div><span class="ccat">イベント</span></div>
     <div class="ci" onclick="tog(this)"><div class="chk"></div><div class="cl">スタッフ名札・腕章</div><span class="ccat">スタッフ</span></div>
     <div class="ci" onclick="tog(this)"><div class="chk"></div><div class="cl">無線機・トランシーバー</div><span class="ccat">通信</span></div>
     <div class="ci" onclick="tog(this)"><div class="chk"></div><div class="cl">案内看板・誘導サイン</div><span class="ccat">設営</span></div>
@@ -717,7 +723,6 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--t
     <div class="ci" onclick="tog(this)"><div class="chk"></div><div class="cl">トイレットペーパー（補充用）</div><span class="ccat">清掃</span></div>
     <div class="ci" onclick="tog(this)"><div class="chk"></div><div class="cl">救急セット</div><span class="ccat">安全</span></div>
     <div class="ci" onclick="tog(this)"><div class="chk"></div><div class="cl">喫煙所案内用品</div><span class="ccat">設営</span></div>
-    <div class="ci" onclick="tog(this)"><div class="chk"></div><div class="cl">綱引き用の綱・参加賞</div><span class="ccat">イベント</span></div>
     <div class="ci" onclick="tog(this)"><div class="chk"></div><div class="cl">出店者受付リスト（印刷）</div><span class="ccat">本部</span></div>
     <div class="ci" onclick="tog(this)"><div class="chk"></div><div class="cl">チラシ・パンフレット</div><span class="ccat">配布</span></div>
     <div class="ci" onclick="tog(this)"><div class="chk"></div><div class="cl">雨天対応グッズ</div><span class="ccat">予備</span></div>
@@ -738,24 +743,25 @@ function sw(name,el){
   el.classList.add('active');
   el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 }
-function tog(item){item.querySelector('.chk').classList.toggle('done');item.querySelector('.cl').classList.toggle('done');}
+function tog(item){
+  item.querySelector('.chk').classList.toggle('done');
+  item.querySelector('.cl').classList.toggle('done');
+}
 function openLb(img){document.getElementById('lbi').src=img.src;document.getElementById('lb').classList.add('open');}
 function closeLb(){document.getElementById('lb').classList.remove('open');}
-function showStage(d){
+function showStageDay(d,btn){
   document.getElementById('stage1').style.display=d===1?'block':'none';
   document.getElementById('stage2').style.display=d===2?'block':'none';
-  document.getElementById('sd1').className='dtbtn'+(d===1?' on':'');
-  document.getElementById('sd2').className='dtbtn'+(d===2?' on':'');
+  document.querySelectorAll('#tab-stage .daybtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
 }
-function showTask(d){
+function showTaskDay(d,btn){
   document.getElementById('day4').style.display=d===4?'block':'none';
   document.getElementById('day5').style.display=d===5?'block':'none';
-  document.getElementById('td1').className='dtbtn'+(d===4?' on':'');
-  document.getElementById('td2').className='dtbtn'+(d===5?' on':'');
+  document.querySelectorAll('#tab-tasks .daybtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
 }
-
 function toggleZone(el){el.classList.toggle('open');}
-function toggleZone(el){el.classList.toggle("open");}
 </script>
 </body>
 </html>
