@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>石渡有沙 | オンライン秘書・デザイナー</title>
+<meta name="description" content="専業主婦にオンライン秘書という選択肢を。フリーランス オンライン秘書・デザイナー 石渡有沙のポートフォリオサイト。">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+JP:wght@200;300;400;500;700&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0a0a0a;
+  --charcoal: #1a1a1a;
+  --dark: #222;
+  --gray: #888;
+  --light-gray: #ccc;
+  --off-white: #f7f3f1;
+  --white: #fff;
+  --rose: #C4888E;
+  --rose-deep: #a86870;
+  --rose-pale: #f5e8e9;
+  --navy: #1E2D5A;
+  --accent: #e8654a;
+  --text: #2a2a2a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.8;
+  overflow-x: hidden;
+  background: var(--white);
+}
+
+/* =====================
+   LOADING
+===================== */
+.loading-screen {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--black);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+.loading-text {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: var(--white);
+  letter-spacing: 0.3em;
+  opacity: 0;
+  animation: loadFade 2s ease forwards;
+}
+@keyframes loadFade {
+  0% { opacity: 0; transform: translateY(20px); }
+  40% { opacity: 1; transform: translateY(0); }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* =====================
+   NAV
+===================== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 40px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  transition: color 0.4s;
+}
+nav.scrolled .nav-logo { color: var(--navy); }
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--white); }
+nav.scrolled .nav-links a { color: var(--gray); }
+nav.scrolled .nav-links a:hover { color: var(--text); }
+.nav-contact {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 8px 20px;
+  transition: all 0.3s;
+}
+.nav-contact:hover { background: var(--white); color: var(--black); }
+nav.scrolled .nav-contact {
+  color: var(--text);
+  border-color: var(--text);
+}
+nav.scrolled .nav-contact:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* Mobile menu */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-toggle span {
+  width: 22px;
+  height: 1.5px;
+  background: var(--white);
+  transition: all 0.3s;
+}
+nav.scrolled .nav-toggle span { background: var(--text); }
+
+/* =====================
+   HERO
+===================== */
+.hero {
+  min-height: 100vh;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--charcoal) 0%, var(--black) 100%);
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -200px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,136,142,0.08) 0%, transparent 70%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 140px 60px 100px;
+  width: 100%;
+}
+.hero-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.5s forwards;
+}
+
+.hero-statement {
+  margin-bottom: 48px;
+}
+.hero-line {
+  display: block;
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.6;
+  opacity: 0;
+}
+.hero-line.large {
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.hero-line.medium {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+.hero-line.small {
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.04em;
+  margin-top: 12px;
+}
+.hero-line .accent {
+  color: var(--rose);
+}
+.hero-line .strong {
+  font-weight: 500;
+}
+.hero-line.animate { animation: fadeUp 0.8s ease forwards; }
+
+.hero-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--rose);
+  margin-bottom: 32px;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.hero-divider.animate {
+  animation: lineGrow 0.8s ease forwards;
+}
+
+.hero-name {
+  opacity: 0;
+}
+.hero-name.animate {
+  animation: fadeUp 0.8s ease forwards;
+}
+.hero-name-main {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--white);
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+.hero-name-sub {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.06em;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 60px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 2.5s forwards;
+}
+.scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--rose), transparent);
+  animation: scrollPulse 2s ease infinite;
+}
+.scroll-text {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  writing-mode: vertical-rl;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes lineGrow {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* =====================
+   MANIFESTO
+===================== */
+.manifesto {
+  background: var(--white);
+  padding: 120px 0;
+  position: relative;
+}
+.manifesto-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.manifesto-eyebrow {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 40px;
+}
+.manifesto-text {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 300;
+  line-height: 2.8;
+  color: var(--text);
+}
+.manifesto-text p {
+  margin-bottom: 32px;
+}
+.manifesto-text strong {
+  font-weight: 500;
+  color: var(--navy);
+}
+.manifesto-text em {
+  font-style: normal;
+  color: var(--rose-deep);
+  font-weight: 400;
+}
+.manifesto-highlight {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  font-weight: 400;
+  color: var(--navy);
+  line-height: 2.2;
+  border-left: 3px solid var(--rose);
+  padding-left: 28px;
+  margin: 48px 0;
+}
+
+/* =====================
+   PROFILE
+===================== */
+.profile {
+  background: var(--off-white);
+  padding: 120px 0;
+}
+.profile-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 80px;
+  align-items: start;
+}
+.profile-photo {
+  aspect-ratio: 3/4;
+  background: linear-gradient(145deg, var(--charcoal) 0%, #2a2a2a 100%);
+  position: relative;
+  overflow: hidden;
+}
+.profile-photo-placeholder {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(255,255,255,0.25);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+.profile-photo-placeholder::before {
+  content: '';
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+}
+.profile-photo::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 40%;
+  background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+}
+
+.profile-content {}
+.profile-eyebrow {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 20px;
+}
+.profile-name-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--navy);
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.profile-name-ja {
+  font-size: 0.85rem;
+  color: var(--gray);
+  letter-spacing: 0.15em;
+  margin-bottom: 24px;
+}
+.profile-role {
+  font-size: 0.82rem;
+  color: var(--rose-deep);
+  letter-spacing: 0.06em;
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.profile-bio {
+  font-size: 0.88rem;
+  line-height: 2.2;
+  color: #555;
+  margin-bottom: 40px;
+}
+.profile-bio p { margin-bottom: 16px; }
+.profile-bio strong { color: var(--text); font-weight: 500; }
+
+.profile-data {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+.profile-data-item {
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.profile-data-item:nth-child(odd) { padding-right: 20px; }
+.profile-data-item:nth-child(even) { padding-left: 20px; border-left: 1px solid rgba(0,0,0,0.08); }
+.profile-data-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 4px;
+}
+.profile-data-value {
+  font-size: 0.85rem;
+  color: var(--text);
+  font-weight: 400;
+}
+
+/* =====================
+   SERVICES
+===================== */
+.services {
+  background: var(--white);
+  padding: 120px 0;
+}
+.services-header {
+  max-width: 1000px;
+  margin: 0 auto 64px;
+  padding: 0 40px;
+}
+.services-eyebrow {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 16px;
+}
+.services-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1.5;
+}
+
+.services-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(0,0,0,0.06);
+}
+.service-card {
+  background: var(--white);
+  padding: 48px 36px;
+  position: relative;
+  transition: all 0.4s ease;
+}
+.service-card:hover {
+  background: var(--off-white);
+}
+.service-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: rgba(0,0,0,0.06);
+  line-height: 1;
+  margin-bottom: 24px;
+}
+.service-title {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.service-title-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--rose);
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+.service-desc {
+  font-size: 0.82rem;
+  color: #666;
+  line-height: 2;
+  margin-bottom: 24px;
+}
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.service-tag {
+  font-size: 0.68rem;
+  color: var(--gray);
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 4px 10px;
+  letter-spacing: 0.02em;
+}
+
+/* =====================
+   WORKS
+===================== */
+.works {
+  background: var(--charcoal);
+  padding: 120px 0;
+}
+.works-header {
+  max-width: 1000px;
+  margin: 0 auto 64px;
+  padding: 0 40px;
+}
+.works-eyebrow {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 16px;
+}
+.works-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.5;
+}
+
+.works-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.work-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 36px;
+  transition: all 0.4s ease;
+  position: relative;
+}
+.work-card:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(196,136,142,0.3);
+}
+.work-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 0;
+  background: var(--rose);
+  transition: height 0.4s ease;
+}
+.work-card:hover::before { height: 100%; }
+
+.work-category {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 16px;
+}
+.work-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.work-desc {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.work-result {
+  font-size: 0.78rem;
+  color: var(--rose);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* =====================
+   VISION
+===================== */
+.vision {
+  background: var(--navy);
+  padding: 140px 0;
+  position: relative;
+  overflow: hidden;
+}
+.vision::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,136,142,0.1) 0%, transparent 70%);
+}
+.vision-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 40px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.vision-eyebrow {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 40px;
+}
+.vision-statement {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 2;
+  letter-spacing: 0.08em;
+  margin-bottom: 48px;
+}
+.vision-body {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 2.4;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.vision-body strong {
+  color: rgba(255,255,255,0.85);
+  font-weight: 400;
+}
+
+/* =====================
+   COMMUNITY LINK
+===================== */
+.community {
+  background: var(--off-white);
+  padding: 100px 0;
+}
+.community-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.community-text {}
+.community-eyebrow {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 16px;
+}
+.community-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.community-desc {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 2;
+  margin-bottom: 28px;
+}
+.community-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--navy);
+  padding-bottom: 4px;
+  transition: all 0.3s;
+}
+.community-link:hover { color: var(--rose-deep); border-color: var(--rose-deep); }
+.community-link::after { content: '→'; transition: transform 0.3s; }
+.community-link:hover::after { transform: translateX(4px); }
+
+.community-card {
+  background: var(--white);
+  padding: 40px 32px;
+  border-left: 3px solid var(--rose);
+}
+.community-card-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--navy);
+  margin-bottom: 16px;
+}
+.community-card-desc {
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.9;
+}
+
+/* =====================
+   CONTACT
+===================== */
+.contact {
+  background: var(--black);
+  padding: 120px 0;
+  position: relative;
+}
+.contact-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 40px;
+  text-align: center;
+}
+.contact-eyebrow {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 32px;
+}
+.contact-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  letter-spacing: 0.06em;
+}
+.contact-sub {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 2;
+  margin-bottom: 48px;
+}
+.contact-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 360px;
+  margin: 0 auto;
+}
+.contact-btn {
+  display: block;
+  padding: 16px 32px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  font-weight: 400;
+  text-align: center;
+  transition: all 0.3s;
+}
+.contact-btn.primary {
+  background: var(--rose);
+  color: var(--white);
+}
+.contact-btn.primary:hover {
+  background: var(--rose-deep);
+  transform: translateY(-2px);
+}
+.contact-btn.secondary {
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.6);
+}
+.contact-btn.secondary:hover {
+  border-color: rgba(255,255,255,0.5);
+  color: var(--white);
+}
+
+/* =====================
+   FOOTER
+===================== */
+footer {
+  background: var(--black);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 40px;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+.footer-copy {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.08em;
+}
+
+/* =====================
+   SCROLL ANIMATIONS
+===================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 768px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .nav-contact { display: none; }
+  .nav-toggle { display: flex; }
+
+  .hero-content { padding: 120px 28px 80px; }
+  .scroll-indicator { left: 28px; }
+
+  .manifesto-inner { padding: 0 28px; }
+  .manifesto { padding: 80px 0; }
+
+  .profile { padding: 80px 0; }
+  .profile-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 28px;
+  }
+  .profile-photo { max-width: 280px; }
+
+  .services { padding: 80px 0; }
+  .services-header { padding: 0 28px; }
+  .services-grid {
+    grid-template-columns: 1fr;
+    padding: 0 28px;
+  }
+
+  .works { padding: 80px 0; }
+  .works-header { padding: 0 28px; }
+  .works-grid {
+    grid-template-columns: 1fr;
+    padding: 0 28px;
+  }
+
+  .vision { padding: 80px 0; }
+  .vision-inner { padding: 0 28px; }
+
+  .community { padding: 80px 0; }
+  .community-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 0 28px;
+  }
+
+  .contact { padding: 80px 0; }
+  .contact-inner { padding: 0 28px; }
+}
+
+@media (max-width: 480px) {
+  .hero-line.large {
+    font-size: 1.8rem;
+  }
+  .hero-line.medium {
+    font-size: 1.2rem;
+  }
+  .profile-data {
+    grid-template-columns: 1fr;
+  }
+  .profile-data-item:nth-child(even) {
+    padding-left: 0;
+    border-left: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div class="loading-screen" id="loading">
+  <div class="loading-text">専業主婦にオンライン秘書という選択肢を。</div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Arisa Ishiwatari</a>
+  <ul class="nav-links">
+    <li><a href="#manifesto">Story</a></li>
+    <li><a href="#profile">Profile</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#works">Works</a></li>
+    <li><a href="#vision">Vision</a></li>
+  </ul>
+  <a href="#contact" class="nav-contact">Contact</a>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Online Secretary & Designer</div>
+
+    <div class="hero-statement">
+      <span class="hero-line large" style="animation-delay:0.8s">専業主婦は<span class="accent">いやだ。</span></span>
+      <span class="hero-line medium" style="animation-delay:1.2s">家事が嫌い。</span>
+      <span class="hero-line medium" style="animation-delay:1.6s"><span class="strong">それでいい。</span></span>
+      <span class="hero-line small" style="animation-delay:2.0s">でも子育てもあるから在宅でやりたい。だから、在宅ワーク。</span>
+    </div>
+
+    <div class="hero-divider"></div>
+
+    <div class="hero-name">
+      <div class="hero-name-main">Arisa Ishiwatari</div>
+      <div class="hero-name-sub">Freelance Online Secretary & Designer</div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <div class="scroll-text">Scroll</div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto" id="manifesto">
+  <div class="manifesto-inner">
+    <div class="manifesto-eyebrow reveal">My Story</div>
+
+    <div class="manifesto-text reveal">
+      <p>「専業主婦になりたかったわけじゃない。」</p>
+      <p>結婚して、子どもが生まれて、<br>気がついたら<strong>「専業主婦」</strong>という肩書きがついていた。</p>
+      <p>家事が好きなわけでもない。<br>料理が得意なわけでもない。<br>ただ、<em>子どもとの時間は大切にしたかった。</em></p>
+    </div>
+
+    <div class="manifesto-highlight reveal">
+      わがままじゃない。<br>
+      自分らしく生きたいだけ。
+    </div>
+
+    <div class="manifesto-text reveal">
+      <p>だから選んだ。在宅ワークという道を。</p>
+      <p>PTA向けのデザインを独学で作り始めた。<br>Canvaで、見よう見まねで。<br>それが少しずつ仕事になった。</p>
+      <p>誰かに教わったわけじゃない。<br>スクールに通ったわけでもない。<br><strong>「やりたい」を「やった」に変えただけ。</strong></p>
+      <p>2024年11月、独立。<br>3人の子育てをしながら、<br>オンライン秘書・デザイナー・イベントプロデューサーとして働いている。</p>
+    </div>
+
+    <div class="manifesto-highlight reveal">
+      好きでもない家事を完璧にやるより、<br>
+      好きなことで誰かの役に立つほうが、<br>
+      ずっと自分らしい。
+    </div>
+  </div>
+</section>
+
+<!-- PROFILE -->
+<section class="profile" id="profile">
+  <div class="profile-inner">
+    <div class="profile-photo reveal">
+      <div class="profile-photo-placeholder">
+        <span>PHOTO</span>
+      </div>
+    </div>
+    <div class="profile-content">
+      <div class="profile-eyebrow reveal">Profile</div>
+      <div class="profile-name-en reveal">Arisa Ishiwatari</div>
+      <div class="profile-name-ja reveal">石渡 有沙</div>
+      <div class="profile-role reveal">フリーランス オンライン秘書 / デザイナー / イベントプロデューサー</div>
+
+      <div class="profile-bio reveal">
+        <p>埼玉県三郷市在住。3児の母。</p>
+        <p>「在宅で働きたいけど、何からすればいいかわからない」——そんな自分を変えたくて、PTAのデザイン素材を独学で作り始めた。その評価をきっかけに営業を開始し、<strong>2024年11月に独立。</strong></p>
+        <p>現在はオンライン秘書・デザイン・イベントプロデュースをワンストップで提供。<strong>「みさとの桜祭り」では初開催で1,000名以上を動員。</strong></p>
+        <p>同じように「動けないママ」の背中を押すコミュニティ<strong>「黒子になろう。」</strong>を主宰している。</p>
+      </div>
+
+      <div class="profile-data reveal">
+        <div class="profile-data-item">
+          <div class="profile-data-label">Location</div>
+          <div class="profile-data-value">埼玉県三郷市</div>
+        </div>
+        <div class="profile-data-item">
+          <div class="profile-data-label">Founded</div>
+          <div class="profile-data-value">2024年11月</div>
+        </div>
+        <div class="profile-data-item">
+          <div class="profile-data-label">Skills</div>
+          <div class="profile-data-value">Canva / AI活用 / 秘書業務</div>
+        </div>
+        <div class="profile-data-item">
+          <div class="profile-data-label">Community</div>
+          <div class="profile-data-value">黒子になろう。主宰</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div class="services-eyebrow reveal">Services</div>
+    <h2 class="services-title reveal">あなたの「やりたい」を、<br>裏側から支える。</h2>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <div class="service-title">オンライン秘書</div>
+      <div class="service-title-en">Online Secretary</div>
+      <div class="service-desc">スケジュール管理、メール対応、資料作成、リサーチなど。経営者の「右腕」として、バックオフィス業務をまるごと引き受けます。</div>
+      <div class="service-tags">
+        <span class="service-tag">スケジュール管理</span>
+        <span class="service-tag">メール対応</span>
+        <span class="service-tag">資料作成</span>
+        <span class="service-tag">リサーチ</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">02</div>
+      <div class="service-title">デザイン制作</div>
+      <div class="service-title-en">Design</div>
+      <div class="service-desc">チラシ、SNS投稿画像、名刺、バナーなど。Canvaを活用し、スピーディーかつ高品質なデザインを提供します。</div>
+      <div class="service-tags">
+        <span class="service-tag">チラシ</span>
+        <span class="service-tag">SNS画像</span>
+        <span class="service-tag">名刺</span>
+        <span class="service-tag">バナー</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">03</div>
+      <div class="service-title">イベントプロデュース</div>
+      <div class="service-title-en">Event Production</div>
+      <div class="service-desc">企画から当日運営まで。地域イベントやマルシェのトータルプロデュースを行います。</div>
+      <div class="service-tags">
+        <span class="service-tag">企画立案</span>
+        <span class="service-tag">運営管理</span>
+        <span class="service-tag">集客</span>
+        <span class="service-tag">当日運営</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section class="works" id="works">
+  <div class="works-header">
+    <div class="works-eyebrow reveal">Works</div>
+    <h2 class="works-title reveal">実績</h2>
+  </div>
+
+  <div class="works-grid">
+    <div class="work-card reveal">
+      <div class="work-category">Event Production</div>
+      <div class="work-title">みさとの桜祭り</div>
+      <div class="work-desc">三郷市にて初開催の桜祭り。企画立案から出店者募集、当日の運営まで一貫してプロデュース。地域の飲食店・ハンドメイド作家と連携し、地域活性化イベントとして実現。</div>
+      <div class="work-result">初開催で来場者 1,000名以上を動員</div>
+    </div>
+
+    <div class="work-card reveal">
+      <div class="work-category">Design</div>
+      <div class="work-title">PTA・地域向けデザイン制作</div>
+      <div class="work-desc">PTA配布物やイベントチラシを独学でデザイン。周囲の評価をきっかけに、デザイン業務として受注を開始。現在も継続的に制作。</div>
+      <div class="work-result">独学からプロのデザイナーへ</div>
+    </div>
+
+    <div class="work-card reveal">
+      <div class="work-category">Online Secretary</div>
+      <div class="work-title">経営者のバックオフィス支援</div>
+      <div class="work-desc">複数の経営者のオンライン秘書として、スケジュール管理・メール対応・資料作成を担当。信頼関係をベースにした継続的なサポート。</div>
+      <div class="work-result">複数クライアントの右腕として稼働中</div>
+    </div>
+
+    <div class="work-card reveal">
+      <div class="work-category">Community</div>
+      <div class="work-title">黒子になろう。</div>
+      <div class="work-desc">在宅ワークを始めたいママのためのコミュニティを主宰。無料コミュニティと有料の「黒子学校」の2層構造で、フリーランスとして稼げるママを育成。</div>
+      <div class="work-result">在宅ワークママのコミュニティを運営</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section class="vision" id="vision">
+  <div class="vision-inner">
+    <div class="vision-eyebrow reveal">Vision</div>
+    <div class="vision-statement reveal">
+      専業主婦に<br>オンライン秘書という<br>選択肢を。
+    </div>
+    <div class="vision-body reveal">
+      <p>「専業主婦」しか選べないわけじゃない。<br>
+      <strong>家にいながら、自分のスキルで、誰かの役に立てる。</strong><br>
+      その選択肢があることを、もっと多くのママに知ってほしい。</p>
+      <p>私がそうだったように。<br>
+      <strong>「やりたい」を「やった」に変えられる人を、ひとりでも増やしたい。</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="community">
+  <div class="community-inner">
+    <div class="community-text reveal">
+      <div class="community-eyebrow">Community</div>
+      <h3 class="community-title">同じ想いを持つママたちと、<br>一緒に。</h3>
+      <div class="community-desc">在宅ワークに興味があるママのためのコミュニティ「黒子になろう。」を主宰しています。情報交換から実践スキルの習得まで、仲間と一緒に一歩を踏み出せる場所です。</div>
+      <a href="index.html" class="community-link">黒子になろう。を見る</a>
+    </div>
+    <div class="community-card reveal">
+      <div class="community-card-logo">黒子になろう。</div>
+      <div class="community-card-desc">
+        在宅ワークをしたいママのコミュニティ。無料のLINEオープンチャットから、本気で稼ぎたい人向けの「黒子学校」まで。あなたのペースで始められます。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-eyebrow reveal">Contact</div>
+    <h2 class="contact-title reveal">お仕事のご相談、<br>お気軽にどうぞ。</h2>
+    <p class="contact-sub reveal">オンライン秘書・デザイン制作・イベントプロデュースなど、<br>まずはお気軽にご連絡ください。</p>
+    <div class="contact-buttons reveal">
+      <a href="mailto:ishiwata@sou-zou-do.com" class="contact-btn primary">メールで相談する</a>
+      <a href="#" class="contact-btn secondary">SNSでつながる</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Arisa Ishiwatari</div>
+  <p class="footer-copy">&copy; 2025 Arisa Ishiwatari. All rights reserved.</p>
+</footer>
+
+<script>
+(function() {
+  // Loading screen
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      document.getElementById('loading').classList.add('hidden');
+    }, 2200);
+  });
+
+  // Hero animations
+  setTimeout(function() {
+    var lines = document.querySelectorAll('.hero-line');
+    lines.forEach(function(line) {
+      var delay = parseFloat(line.style.animationDelay) * 1000 || 0;
+      setTimeout(function() { line.classList.add('animate'); }, delay);
+    });
+  }, 100);
+
+  setTimeout(function() {
+    document.querySelector('.hero-divider').classList.add('animate');
+  }, 2200);
+
+  setTimeout(function() {
+    document.querySelector('.hero-name').classList.add('animate');
+  }, 2500);
+
+  // Nav scroll
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 80) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // Scroll reveal
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(function(el) { observer.observe(el); });
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
