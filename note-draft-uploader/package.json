@@ -1,0 +1,17 @@
+{
+  "name": "note-draft-uploader",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "ローカルの note貼り付け用HTML を、note.com に『下書き』として自動投入するツール（公開はしない）",
+  "scripts": {
+    "login": "node login.mjs",
+    "dry-run": "node run.mjs --dry-run --all",
+    "one": "node run.mjs --limit 1",
+    "all": "node run.mjs --all"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "playwright": "^1.48.0"
+  }
+}
